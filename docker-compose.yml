@@ -1,0 +1,22 @@
+services:
+  db:
+    container_name: postgrescustomer
+    image: postgres
+    environment:
+      POSTGRES_USER: tipu96
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgrescustomer
+    volumes:
+      - db:/data/postgrescustomer
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
